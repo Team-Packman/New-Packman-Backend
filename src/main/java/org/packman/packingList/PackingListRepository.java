@@ -10,4 +10,6 @@ public interface PackingListRepository extends JpaRepository<PackingList, Long> 
     List<PackingList> findByPositionGreaterThan(Integer position);
 
     List<PackingList> findByPositionGreaterThanEqual(Integer position);
+
+    List<PackingList> findAllByUserIdOrderByPosition(Long userId);
 }

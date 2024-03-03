@@ -75,4 +75,10 @@ public class PackingListService {
 
         packingListRepository.saveAll(updatePacks);
     }
+
+    @Transactional(readOnly = true)
+    public List<PackingList> getAllByUserId(Long userId) {
+        return packingListRepository.findAllByUserIdOrderByPosition(userId);
+    }
+
 }
