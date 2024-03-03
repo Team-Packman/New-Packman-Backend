@@ -10,4 +10,6 @@ public interface PackRepository extends JpaRepository<Pack, Long> {
     List<Pack> findByCategoryIdAndPositionGreaterThan(Long categoryId, Integer position);
 
     List<Pack> findByCategoryIdAndPositionGreaterThanEqual(Long categoryId, Integer position);
+
+    List<Pack> findAllByCategoryIdOrderByPosition(Long categoryId);
 }
