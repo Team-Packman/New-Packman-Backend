@@ -68,4 +68,9 @@ public class PackService {
         packRepository.saveAll(updatePacks);
     }
 
+    @Transactional(readOnly = true)
+    public List<Pack> getPacksByCategoryId(Long categoryId) {
+        return packRepository.findAllByCategoryIdOrderByPosition(categoryId);
+    }
+
 }
