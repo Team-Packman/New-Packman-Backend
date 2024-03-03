@@ -20,22 +20,47 @@ public class Pack {
 
     private Long categoryId;
 
-    private int position;
+    private Integer position;
 
     @Builder
-    private Pack(Long id, String name, Long categoryId, int position) {
+    private Pack(Long id, String name, Long categoryId, Integer position) {
         this.id = id;
         this.name = name;
         this.categoryId = categoryId;
         this.position = position;
     }
 
-    public Pack updatePosition(Long categoryId, int position) {
+    public Pack updatePositionAndCategory(Long categoryId, Integer position) {
         return Pack.builder()
                 .id(this.id)
                 .name(this.name)
                 .categoryId(categoryId)
                 .position(position)
                 .build();
+    }
+
+    public Pack updatePosition(Integer position) {
+        return Pack.builder()
+                .id(this.id)
+                .name(this.name)
+                .categoryId(this.categoryId)
+                .position(position)
+                .build();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Long getCategoryId() {
+        return categoryId;
+    }
+
+    public Integer getPosition() {
+        return position;
+    }
+
+    public String getName() {
+        return name;
     }
 }

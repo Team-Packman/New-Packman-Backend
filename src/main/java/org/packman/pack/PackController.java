@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/packs")
+@RequestMapping("/api/v2/packs")
 public class PackController {
 
     private final PackService packService;
