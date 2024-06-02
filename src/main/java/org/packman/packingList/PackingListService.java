@@ -81,4 +81,10 @@ public class PackingListService {
         return packingListRepository.findAllByUserIdOrderByPosition(userId);
     }
 
+    @Transactional(readOnly = true)
+    public PackingList get(Long id) {
+        return packingListRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 패킹리스트입니다."));
+    }
+
 }
