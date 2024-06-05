@@ -1,7 +1,7 @@
 package org.packman.packingList;
 
-import org.packman.category.domain.Category;
 import org.packman.category.CategoryService;
+import org.packman.category.domain.Category;
 import org.packman.packingList.domain.PackingList;
 import org.packman.packingList.dto.request.PackingListPosition;
 import org.springframework.stereotype.Service;
