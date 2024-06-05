@@ -1,9 +1,10 @@
 package org.packman.packingList;
 
-import org.packman.category.Category;
+import org.packman.category.domain.Category;
 import org.packman.category.dto.response.CategoryGet;
+import org.packman.packingList.domain.PackingList;
 import org.packman.packingList.dto.response.PackingListGet;
-import org.packman.packingList.request.PackingListPosition;
+import org.packman.packingList.dto.request.PackingListPosition;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
