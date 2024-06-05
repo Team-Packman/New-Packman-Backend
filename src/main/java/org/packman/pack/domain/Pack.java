@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -13,13 +14,17 @@ import lombok.NoArgsConstructor;
 public class Pack {
 
     @Id
+    @Getter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Getter
     private String name;
 
+    @Getter
     private Long categoryId;
 
+    @Getter
     private Integer position;
 
     @Builder
@@ -46,21 +51,5 @@ public class Pack {
                 .categoryId(this.categoryId)
                 .position(position)
                 .build();
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public Long getCategoryId() {
-        return categoryId;
-    }
-
-    public Integer getPosition() {
-        return position;
-    }
-
-    public String getName() {
-        return name;
     }
 }

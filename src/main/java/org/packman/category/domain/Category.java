@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -12,18 +13,13 @@ import lombok.NoArgsConstructor;
 public class Category {
 
     @Id
+    @Getter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Getter
     private String name;
 
     private Long packingListId;
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
 }
