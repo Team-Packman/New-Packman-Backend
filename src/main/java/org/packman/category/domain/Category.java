@@ -20,6 +20,9 @@ public class Category {
     @Getter
     private String name;
 
+    @Getter
+    private Integer position;
+
     private Long packingListId;
 
 }

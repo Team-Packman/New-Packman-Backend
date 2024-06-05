@@ -25,14 +25,18 @@ public class Pack {
     private Long categoryId;
 
     @Getter
+    private boolean checked;
+
+    @Getter
     private Integer position;
 
     @Builder
-    private Pack(Long id, String name, Long categoryId, Integer position) {
+    private Pack(Long id, String name, Long categoryId, Integer position, boolean checked) {
         this.id = id;
         this.name = name;
         this.categoryId = categoryId;
         this.position = position;
+        this.checked = checked;
     }
 
     public Pack updatePositionAndCategory(Long categoryId, Integer position) {
