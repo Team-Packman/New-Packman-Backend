@@ -1,5 +1,6 @@
 package org.packman.pack;
 
+import org.packman.pack.domain.Pack;
 import org.packman.pack.dto.request.PackPosition;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
