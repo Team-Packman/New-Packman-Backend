@@ -1,6 +1,6 @@
 package org.packman.user;
 
-import org.packman.packingList.PackingList;
+import org.packman.packingList.domain.PackingList;
 import org.packman.packingList.PackingListService;
 import org.springframework.stereotype.Service;
 

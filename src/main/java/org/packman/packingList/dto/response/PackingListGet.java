@@ -1,7 +1,7 @@
 package org.packman.packingList.dto.response;
 
-import org.packman.packingList.OpenStatus;
-import org.packman.packingList.PackingList;
+import org.packman.packingList.domain.OpenStatus;
+import org.packman.packingList.domain.PackingList;
 
 import java.time.LocalDate;
 

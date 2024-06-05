@@ -1,6 +1,6 @@
 package org.packman.category.dto.response;
 
-import org.packman.category.Category;
+import org.packman.category.domain.Category;
 
 public record CategoryGet(Long id, String name) {
     public static CategoryGet from(Category category) {

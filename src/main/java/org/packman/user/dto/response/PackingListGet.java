@@ -1,6 +1,6 @@
 package org.packman.user.dto.response;
 
-import org.packman.packingList.PackingList;
+import org.packman.packingList.domain.PackingList;
 
 public record PackingListGet(Long id, String name) {
 

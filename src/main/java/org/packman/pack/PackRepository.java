@@ -1,5 +1,6 @@
 package org.packman.pack;
 
+import org.packman.pack.domain.Pack;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,6 @@
 package org.packman.user;
 
-import org.packman.packingList.PackingList;
+import org.packman.packingList.domain.PackingList;
 import org.packman.user.dto.response.PackingListGet;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

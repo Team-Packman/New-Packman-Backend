@@ -1,6 +1,6 @@
 package org.packman.category;
 
-import org.packman.pack.Pack;
+import org.packman.pack.domain.Pack;
 import org.packman.pack.dto.response.PackGet;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
