@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -13,21 +14,29 @@ import lombok.NoArgsConstructor;
 public class Pack {
 
     @Id
+    @Getter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Getter
     private String name;
 
+    @Getter
     private Long categoryId;
 
+    @Getter
+    private boolean checked;
+
+    @Getter
     private Integer position;
 
     @Builder
-    private Pack(Long id, String name, Long categoryId, Integer position) {
+    private Pack(Long id, String name, Long categoryId, Integer position, boolean checked) {
         this.id = id;
         this.name = name;
         this.categoryId = categoryId;
         this.position = position;
+        this.checked = checked;
     }
 
     public Pack updatePositionAndCategory(Long categoryId, Integer position) {
@@ -46,21 +55,5 @@ public class Pack {
                 .categoryId(this.categoryId)
                 .position(position)
                 .build();
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public Long getCategoryId() {
-        return categoryId;
-    }
-
-    public Integer getPosition() {
-        return position;
-    }
-
-    public String getName() {
-        return name;
     }
 }

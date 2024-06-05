@@ -26,7 +26,7 @@ public class CategoryService {
     }
 
     public List<Category> getAllByPackingListId(Long id) {
-        return categoryRepository.findAllByPackingListId(id);
+        return categoryRepository.findAllByPackingListIdOrderByPosition(id);
     }
 
 }
