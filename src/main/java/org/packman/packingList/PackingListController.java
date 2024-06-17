@@ -4,6 +4,7 @@ import org.packman.category.CategoryService;
 import org.packman.category.domain.Category;
 import org.packman.category.dto.response.CategoryGet;
 import org.packman.pack.domain.Pack;
+import org.packman.pack.dto.response.PackGet;
 import org.packman.packingList.domain.PackingList;
 import org.packman.packingList.dto.request.PackingListPosition;
 import org.packman.packingList.dto.response.PackingListGet;
@@ -36,6 +37,19 @@ public class PackingListController {
                 .map(category -> {
                     List<Pack> packs = categoryService.getPacks(category.getId());
                     return CategoryGet.from(category, packs);
+                })
+                .toList();
+    }
+
+    @GetMapping("/{packingListId}/packs")
+    public List<PackGet> getPacks(@PathVariable Long packingListId) {
+        List<Category> categories = packingListService.getCategories(packingListId);
+
+        return categories.stream()
+                .flatMap(category -> {
+                    List<Pack> packs = categoryService.getPacks(category.getId());
+                    return packs.stream()
+                            .map(PackGet::from);
                 })
                 .toList();
     }
