@@ -7,15 +7,20 @@ import org.packman.pack.domain.Pack;
 import org.packman.pack.dto.response.PackGet;
 import org.packman.packingList.domain.PackingList;
 import org.packman.packingList.dto.request.PackingListPosition;
+import org.packman.packingList.dto.response.PackingListCreate;
 import org.packman.packingList.dto.response.PackingListGet;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+
+import static org.packman.packingList.domain.Type.ALONE;
+import static org.packman.packingList.domain.Type.TOGETHER;
 
 @RestController
 @RequestMapping("/api/v2/packing-lists")
@@ -27,6 +32,20 @@ public class PackingListController {
     public PackingListController(PackingListService packingListService, CategoryService categoryService) {
         this.packingListService = packingListService;
         this.categoryService = categoryService;
+    }
+
+    @PostMapping
+    public void create(@RequestBody PackingListCreate request) {
+
+        if (ALONE.equals(request.type())) {
+            packingListService.createAlone(request.toEntity());
+        }
+
+        if (TOGETHER.equals(request.type())) {
+            packingListService.createTogether(request.toEntity());
+        }
+
+        // 에러
     }
 
     @GetMapping("/{packingLIstId}/categories")

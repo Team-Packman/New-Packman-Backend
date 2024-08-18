@@ -18,7 +18,7 @@ public class CategoryController {
     private CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
-  
+
     @GetMapping("/{categoryId}/packs")
     public List<PackGet> get(@PathVariable Long categoryId) {
         List<Pack> packs = categoryService.getPacks(categoryId);

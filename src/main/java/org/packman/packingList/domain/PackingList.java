@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 
 @Entity
+@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PackingList {
 
@@ -23,7 +24,8 @@ public class PackingList {
     private Long id;
 
     @Getter
-    private Integer position;
+    @Builder.Default
+    private Integer position = 1;
 
     @Getter
     private String title;
@@ -32,18 +34,21 @@ public class PackingList {
     private LocalDate departureDate;
 
     @Getter
+    @Builder.Default
     @Enumerated(EnumType.STRING)
     private OpenStatus openStatus = OpenStatus.PUBLIC;
 
+    private Long parentId;
+
     private Long userId;
 
-    @Builder
     public PackingList(
             Long id,
             Integer position,
             String title,
             LocalDate departureDate,
             OpenStatus openStatus,
+            Long parentId,
             Long userId
     ) {
         this.id = id;
@@ -51,15 +56,31 @@ public class PackingList {
         this.title = title;
         this.departureDate = departureDate;
         this.openStatus = openStatus;
+        this.parentId = parentId;
         this.userId = userId;
     }
 
-    public PackingList updatePosition(Integer position) {
-        return PackingList.builder()
+    public PackingListBuilder packingList() {
+        return new PackingListBuilder()
                 .id(this.id)
-                .position(position)
+                .position(this.position)
                 .title(this.title)
-                .userId(this.userId)
+                .departureDate(this.departureDate)
+                .openStatus(this.openStatus)
+                .parentId(this.parentId)
+                .userId(this.userId);
+    }
+
+    public PackingList updatePosition(Integer position) {
+        return packingList()
+                .position(position)
+                .build();
+    }
+
+    public PackingList updateParentId(Long parentId) {
+        return packingList()
+                .id(null)
+                .parentId(parentId)
                 .build();
     }
 
