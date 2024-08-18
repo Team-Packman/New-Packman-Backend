@@ -28,6 +28,21 @@ public class PackingListService {
     }
 
     @Transactional
+    public void createAlone(PackingList packingList) {
+        // 추후 패킹리스트들 조회 뷰에서 위치 변동 추가되면 position 넣는 코드 추가
+        packingListRepository.save(packingList);
+    }
+
+    @Transactional
+    public void createTogether(PackingList packingList) {
+        // 추후 패킹리스트들 조회 뷰에서 위치 변동 추가되면 position 넣는 코드 추가
+        PackingList save = packingListRepository.save(packingList);
+        PackingList update = packingList.updateParentId(save.getId());
+
+        packingListRepository.save(update);
+    }
+
+    @Transactional
     public void updatePosition(PackingListPosition packingListPosition) {
         PackingList originalPackingList = packingListRepository.findById(packingListPosition.getId())
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 패킹리스트입니다."));
