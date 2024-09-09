@@ -21,6 +21,19 @@ public class CategoryService {
         this.categoryRepository = categoryRepository;
     }
 
+    public void create(Category category) {
+        List<Category> categories = categoryRepository.findAllByPackingListIdOrderByPosition(category.getPackingListId());
+        int position = 1;
+
+        if(!categories.isEmpty()) {
+            Category last = categories.getLast();
+            position = last.getPosition() + 1;
+        }
+
+        Category update = category.updatePosition(position);
+        categoryRepository.save(update);
+    }
+
     public List<Pack> getPacks(Long categoryId) {
         return packService.getPacksByCategoryId(categoryId);
     }

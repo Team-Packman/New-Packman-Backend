@@ -39,20 +39,25 @@ public class Pack {
         this.checked = checked;
     }
 
-    public Pack updatePositionAndCategory(Long categoryId, Integer position) {
-        return Pack.builder()
+    public PackBuilder pack() {
+        return new PackBuilder()
                 .id(this.id)
                 .name(this.name)
+                .categoryId(this.categoryId)
+                .checked(this.checked)
+                .position(this.position);
+    }
+
+    public Pack updatePositionAndCategory(Long categoryId, Integer position) {
+        return pack()
                 .categoryId(categoryId)
                 .position(position)
                 .build();
     }
 
     public Pack updatePosition(Integer position) {
-        return Pack.builder()
-                .id(this.id)
-                .name(this.name)
-                .categoryId(this.categoryId)
+        return pack()
+                .id(null)
                 .position(position)
                 .build();
     }

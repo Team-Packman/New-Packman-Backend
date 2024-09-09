@@ -18,6 +18,20 @@ public class PackService {
     }
 
     @Transactional
+    public void create(Pack pack) {
+        List<Pack> packs = packRepository.findAllByCategoryIdOrderByPosition(pack.getCategoryId());
+        int position = 1;
+
+        if(!packs.isEmpty()) {
+            Pack last = packs.getLast();
+            position = last.getPosition() + 1;
+        }
+
+        Pack update = pack.updatePosition(position);
+        packRepository.save(update);
+    }
+
+    @Transactional
     public void updatePosition(PackPosition packPosition) {
         Pack originalPack = packRepository.findById(packPosition.getId())
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 짐입니다."));
