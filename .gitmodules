@@ -1,0 +1,3 @@
+[submodule "src/main/resources/packup-submodule"]
+	path = src/main/resources/packup-submodule
+	url = https://github.com/Team-Packman/packup-submodule.git
